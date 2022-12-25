@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block contenido %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+
+<body class="container mt-5">
+    <style>
+        body{
+            background-color: rgb(211, 115, 115);
+        }
+        th{
+            color: rgb(105, 85, 85);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        td{
+            color: rgb(142, 89, 155);
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #title{
+            font-family: 'Sans serif';
+        }
+    </style>
+    <div class="alert alert-danger display-1 text-center" id="title">Lista de los Equipos</div>
+    {% if  equipo %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Nombre</th>
+
+                <th>Año de creación</th>
+
+                <th>Campeón</th>           
+            </tr>
+        </thead>
+        <tbody>
+            {% for eq in equipo %}
+            <tr>
+                <td>{{eq.nombre}}</td>
+
+                <td>{{eq.anio_creacion}}</td>
+
+                {% if eq.campeon %}
+                <td>Si</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info">No hay equipos</div>
+    {% endif %}
+</body>
+{% endblock %}
